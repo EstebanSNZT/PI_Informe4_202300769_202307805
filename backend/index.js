@@ -15,6 +15,12 @@ app.use(
     })
 );
 
+app.post("login", (req, res) => {
+    const data = req.body
+    response = (`Bienvenido ${data.carnet}`)
+    res.send(response)
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
