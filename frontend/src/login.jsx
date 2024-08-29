@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import usac1 from "./images/usac1.jpeg";
+import usac1 from './images/usac1.jpeg';
+ 
 
 const Login = () => {
   const [carnet, setCarnet] = useState('');
@@ -8,17 +9,45 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (carnet === '202307805' && password === 'password123') {
-      alert('Login exitoso');
-    } else {
-      setError('Credenciales incorrectas');
-    }
+    const data = {
+      codigo: parseInt(carnet, 10),
+      contrasenia: password
+    };
+
+    fetch('http://localhost:5000/login', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.success) {
+          const dataUser = res.user;
+          alert(`Bienvenido: ${dataUser.nombres} ${dataUser.apellidos}`);
+          
+          if (res.type === 1) {
+            window.location.href = '/inicio'; 
+          } else if (res.type === 0) {
+            window.location.href = '/administrador/visualizar_usuarios'; 
+          }
+        } else {
+          alert('Número de carnet y/o contraseña incorrectos.');
+        }
+        setCarnet('');
+        setPassword('');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        setError('Hubo un problema con la solicitud. Por favor, inténtelo de nuevo.');
+      });
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
-        <img src={usac1} alt="LOGO" />
+        <img src={usac1} alt="LOGO" className="login-logo" />
         <h2>INICIAR SESIÓN INGENIERÍA USAC</h2>
         <form onSubmit={handleSubmit} className="login-form">
           <input
