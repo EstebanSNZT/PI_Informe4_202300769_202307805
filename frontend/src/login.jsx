@@ -10,8 +10,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      codigo: parseInt(carnet, 10),
-      contrasenia: password
+      carnet: parseInt(carnet, 10),
+      contrasena: password
     };
 
     fetch('http://localhost:5000/login', {
@@ -24,19 +24,10 @@ const Login = () => {
       .then((response) => response.json())
       .then((res) => {
         if (res.success) {
-          const dataUser = res.user;
-          alert(`Bienvenido: ${dataUser.nombres} ${dataUser.apellidos}`);
-          
-          if (res.type === 1) {
-            window.location.href = '/inicio'; 
-          } else if (res.type === 0) {
-            window.location.href = '/administrador/visualizar_usuarios'; 
-          }
+          alert(res)
         } else {
           alert('Número de carnet y/o contraseña incorrectos.');
         }
-        setCarnet('');
-        setPassword('');
       })
       .catch((error) => {
         console.error('Error:', error);
