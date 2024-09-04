@@ -1,0 +1,22 @@
+[
+    {
+        "codigo": 20240001,
+        "nombres": "Alberto Juan",
+        "apellidos": "Perez López",
+        "genero": "M",
+        "facultad": "Arquitectura",
+        "carrera": "Diseño Gráfica",
+        "correo": "albertlop@gmail.com",
+        "contrasenia": "Albert123-"
+    },
+    {
+        "codigo": 20240002,
+        "nombres": "María José",
+        "apellidos": "Martínez Pérez",
+        "genero": "F",
+        "facultad": "Ingeniería",
+        "carrera": "Ingeniería Civil",
+        "correo": "mjmartinez@gmail.com",
+        "contrasenia": "Mj1234@"
+    }
+]

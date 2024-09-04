@@ -1,15 +1,14 @@
-
 import './App.css';
 import React from 'react';
+import { Fragment } from 'react';
+import Router from './Components/Router/Router';
 
-import Login from './login';
-
-const App = () => {
+function App() {
   return (
-    <div>
-      <Login />
-    </div>
+    <Fragment>
+      <Router />
+    </Fragment>
   );
-};
+}
 
 export default App;
