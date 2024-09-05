@@ -30,11 +30,7 @@ function Login() {
                     const dataUser = res.user;
                     alert(`Bienvenido: ${dataUser.nombres} ${dataUser.apellidos}`)
                     setCookie('user', dataUser);
-                    if (res.type === 1) {
-                        navigate('/inicio');
-                    } else if (res.type === 0) {
-                        navigate('/administrador/visualizar_usuarios');
-                    }
+                    navigate('/inicio');
                 } else {
                     alert(`Numero de carnet y/o contraseña incorrectos.`)
                 }
@@ -47,22 +43,6 @@ function Login() {
     const handleRegister = () => {
         navigate('/register');
     };
-
-    const handleELiminateMyUser = () => {
-        fetch(`http://localhost:5000/deleteMyUser`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-
-            .then((response) => response.json())
-            .then((res) => {
-                alert(res.response)
-            })
-            .catch((error) => console.error(error));
-    };
-
 
     return (
         <div className="login-background">
@@ -82,7 +62,7 @@ function Login() {
                                             onChange={(e) => setCodigo(e.target.value)}
                                             value={codigo}
                                         />
-                                        <label htmlFor="floatingInput">Número de Carnet/Código USAC</label>
+                                        <label htmlFor="floatingInput">Número de Carnet</label>
                                     </div>
                                     <div className="form-floating" style={{ width: "100%" }}>
                                         <input
@@ -105,11 +85,6 @@ function Login() {
                                     </div>
                                     <div className="col-auto text-start">
                                         <button type="submit" class="btn btn-outline-primary" onClick={handleRegister}>Regístrate</button>
-                                    </div>
-                                </div>
-                                <div className="row align-items-center justify-content-center">
-                                    <div className="col-auto text-start">
-                                        <button type="button" class="btn btn-outline-warning" onClick={handleELiminateMyUser}>Eliminar mi usuario</button>
                                     </div>
                                 </div>
                             </div>
