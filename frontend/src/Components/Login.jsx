@@ -1,7 +1,8 @@
-import React, { useState, userState } from "react";
+import React, { useState } from "react";
 import './Styles/Login.css';
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import logo1 from './Images/logo1.png'; // Importa la imagen
 
 function Login() {
     const [codigo, setCodigo] = useState('');
@@ -11,10 +12,16 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (!codigo || !contrasenia) {
+            alert("Por favor, ingresa todos los campos.");
+            return;
+        }
+
         const data = {
             codigo: parseInt(codigo, 10),
             contrasenia: contrasenia
-        }
+        };
 
         fetch(`http://localhost:5000/login`, {
             method: "POST",
@@ -23,46 +30,24 @@ function Login() {
                 "Content-Type": "application/json",
             },
         })
-
             .then((response) => response.json())
             .then((res) => {
                 if (res.success) {
                     const dataUser = res.user;
-                    alert(`Bienvenido: ${dataUser.nombres} ${dataUser.apellidos}`)
+                    alert(`Bienvenido: ${dataUser.nombres} ${dataUser.apellidos}`);
                     setCookie('user', dataUser);
-                    if (res.type === 1) {
-                        navigate('/inicio');
-                    } else if (res.type === 0) {
-                        navigate('/administrador/visualizar_usuarios');
-                    }
+                    navigate('/inicio');
                 } else {
-                    alert(`Numero de carnet y/o contraseña incorrectos.`)
+                    alert(`Número de carnet y/o contraseña incorrectos.`);
                 }
-                setCodigo("")
-                setContrasenia("")
+                setCodigo("");
+                setContrasenia("");
             })
-            .catch((error) => console.error(error));
+            .catch((error) => {
+                console.error(error);
+                alert("Hubo un error con el servidor. Inténtalo nuevamente.");
+            });
     };
-
-    const handleRegister = () => {
-        navigate('/register');
-    };
-
-    const handleELiminateMyUser = () => {
-        fetch(`http://localhost:5000/deleteMyUser`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-
-            .then((response) => response.json())
-            .then((res) => {
-                alert(res.response)
-            })
-            .catch((error) => console.error(error));
-    };
-
 
     return (
         <div className="login-background">
@@ -71,46 +56,55 @@ function Login() {
                     <div className="col-md-6 mx-auto">
                         <div className="card">
                             <div className="card-body">
-                                <h2 className="card-title text-center mb-4">Inicio de Sesión</h2>
-                                <form onSubmit={handleSubmit} className='form-signin w-100 m-auto'>
-                                    <div className="form-floating" style={{ width: "100%" }}>
+                                <div className="login-header d-flex align-items-center">
+                                    <img src={logo1} alt="USAC Logo" className="logo" style={{ width: '76px', height: 'auto' }} />
+                                    <div className="text-container">
+                                        <h1 className="university">UNIVERSIDAD DE SAN CARLOS DE GUATEMALA</h1>
+                                        <h2 className="faculty">Facultad de Ingeniería</h2>
+                                    </div>
+                                </div>
+
+                                <h3 className="login-title">INICIAR SESIÓN EN INGENIERÍA USAC</h3>
+
+                                <form onSubmit={handleSubmit} className="form-signin w-100 m-auto">
+                                    <div className="form-floating mb-3">
                                         <input
                                             type="number"
                                             className="form-control"
-                                            id="floatingInput"
                                             placeholder="202400000"
                                             onChange={(e) => setCodigo(e.target.value)}
                                             value={codigo}
+                                            required
                                         />
-                                        <label htmlFor="floatingInput">Número de Carnet/Código USAC</label>
+                                        <label>CUI / REGISTRO ACADEMICO / REGISTRO PERSONAL</label>
                                     </div>
-                                    <div className="form-floating" style={{ width: "100%" }}>
+                                    <div className="form-floating mb-3">
                                         <input
                                             type="password"
                                             className="form-control"
-                                            id="floatingPassword"
-                                            placeholder="Password"
+                                            placeholder="Contraseña"
                                             onChange={(e) => setContrasenia(e.target.value)}
                                             value={contrasenia}
+                                            required
                                         />
-                                        <label htmlFor="floatingPassword">Contraseña</label>
+                                        <label>Contraseña</label>
+                                    </div>
+                                    <div className="form-check mb-3">
+                                        <input
+                                            type="checkbox"
+                                            className="form-check-input"
+                                            id="rememberMe"
+                                        />
+                                        <label className="form-check-label" htmlFor="rememberMe">
+                                            Recordar mi usuario
+                                        </label>
                                     </div>
                                     <div className="text-center">
-                                        <button type="submit" className="btn btn-outline-primary btn-lg">Iniciar Sesión</button>
+                                        <button type="submit" className="btn btn-grey btn-lg">Iniciar Sesión</button>
                                     </div>
                                 </form>
-                                <div className="row align-items-center justify-content-center">
-                                    <div className="col-auto text-center">
-                                        ¿No tienes cuenta?
-                                    </div>
-                                    <div className="col-auto text-start">
-                                        <button type="submit" class="btn btn-outline-primary" onClick={handleRegister}>Regístrate</button>
-                                    </div>
-                                </div>
-                                <div className="row align-items-center justify-content-center">
-                                    <div className="col-auto text-start">
-                                        <button type="button" class="btn btn-outline-warning" onClick={handleELiminateMyUser}>Eliminar mi usuario</button>
-                                    </div>
+                                <div className="text-center mt-3">
+                                    <a href="#">¿Olvidó su contraseña?</a>
                                 </div>
                             </div>
                         </div>

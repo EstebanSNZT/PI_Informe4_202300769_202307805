@@ -1,3 +1,4 @@
+/* Fondo de pantalla */
 .login-background {
     background-image: url('../Images/fondo.jpg');
     background-size: cover;
@@ -10,15 +11,18 @@
     z-index: -1;
 }
 
+/* Estilo para la sección de inicio de sesión */
 .form-signin {
     max-width: 100%;
     padding: 1rem;
 }
 
+/* Estilo cuando un campo de formulario está enfocado */
 .form-signin .form-floating:focus-within {
     z-index: 2;
 }
 
+/* Estilo para los campos de email y contraseña */
 .form-signin input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
@@ -31,7 +35,100 @@
     border-top-right-radius: 0;
 }
 
+/* Contenedor para tablas */
 .table-container {
     margin: 0 auto; /* Centra horizontalmente */
     min-width: 80%; /* Limita el ancho */
+}
+
+/* Ajustes en la cabecera */
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px; /* Aumentar el espacio entre la cabecera y los globos de texto */
+}
+
+/* Estilo del logotipo */
+.login-header .logo {
+    width: 50px; /* Ajusta el tamaño del logo según tu necesidad */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+/* Estilo del título */
+.login-title {
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 1.25em; /* Ajusta el tamaño de fuente según sea necesario */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Contenedor de texto */
+.text-container {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    justify-content: center; /* Centra verticalmente los elementos en el contenedor */
+    align-items: center; /* Centra horizontalmente los elementos en el contenedor */
+    height: 100%; /* Asegúrate de que el contenedor tenga una altura adecuada */
+    text-align: center; /* Centra el texto dentro de cada elemento */
+}
+
+.university {
+    margin: 0; /* Opcional: Elimina márgenes si es necesario */
+    font-size: 2em; /* Ajusta el tamaño de fuente según sea necesario */
+}
+
+.faculty {
+    margin: 0; /* Opcional: Elimina márgenes si es necesario */
+    font-size: 1.5em; /* Ajusta el tamaño de fuente según sea necesario */
+}
+
+/* Estilo para el enlace de "¿Olvidó su contraseña?" en la sección centrada */
+.text-center a {
+    font-size: 13px; /* Reducir tamaño del texto */
+    color: #007bff; /* Cambiar color del texto a azul */
+    text-decoration: none; /* Quitar el subrayado por defecto */
+}
+
+.text-center a:hover {
+    text-decoration: underline; /* Subrayado al pasar el cursor */
+}
+
+/* Estilo del botón */
+.btn-grey {
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    padding: 8px 20px; /* Mantener padding vertical delgado */
+    font-size: 16px;
+    width: 100%; /* El botón ocupará todo el ancho disponible */
+    max-width: 500px; /* Aumentar ancho máximo para alargar más el botón */
+    display: block;
+    margin: 0 auto; /* Centrar el botón horizontalmente */
+    margin-top: 40px;
+}
+
+.btn-grey:hover {
+    background-color: #999;
+}
+
+/* Estilo del texto de la universidad */
+.text-container h1.university {
+    font-size: 16px; /* Más pequeño para "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA" */
+    font-weight: normal;
+    margin: 0; /* Elimina márgenes para ajustar la alineación */
+    color: #333; /* Color del texto */
+}
+
+/* Estilo para "Facultad de Ingeniería" */
+.text-container h2.faculty {
+    font-size: 22px; /* Más grande para "Facultad de Ingeniería" */
+    font-weight: bold;
+    margin: 0; /* Elimina márgenes para ajustar alineación */
+    color: #333; /* Color del texto */
+}
+
+/* Ajustar margen superior de los campos de formulario */
+.form-floating {
+    margin-top: 15px; /* Añadir espacio superior para separar del título */
+    margin-bottom: 10px; /* Mantener separación entre los campos */
 }

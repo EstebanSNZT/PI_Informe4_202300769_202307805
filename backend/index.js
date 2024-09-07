@@ -6,7 +6,7 @@ const moment = require('moment/moment');
 const mysql = require('mysql2');
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 const FILEUSERS = 'users.json';
 const FILEPOSTS = 'posts.json';
 
