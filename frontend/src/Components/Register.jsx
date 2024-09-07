@@ -15,7 +15,6 @@ function Register() {
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
-
         event.preventDefault();
         const newUser = {
             codigo: parseInt(code, 10),

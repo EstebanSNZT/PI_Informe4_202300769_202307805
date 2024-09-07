@@ -49,6 +49,13 @@ function Login() {
             });
     };
 
+<<<<<<< HEAD
+=======
+    const handleRegister = () => {
+        navigate('/register');
+    };
+
+>>>>>>> 1eedc8e8d6f84a94ecd496270b422e1fee46f00f
     return (
         <div className="login-background">
             <div className="container-fluid h-100">
@@ -76,7 +83,11 @@ function Login() {
                                             value={codigo}
                                             required
                                         />
+<<<<<<< HEAD
                                         <label>CUI / REGISTRO ACADEMICO / REGISTRO PERSONAL</label>
+=======
+                                        <label htmlFor="floatingInput">Número de Carnet</label>
+>>>>>>> 1eedc8e8d6f84a94ecd496270b422e1fee46f00f
                                     </div>
                                     <div className="form-floating mb-3">
                                         <input
@@ -103,8 +114,18 @@ function Login() {
                                         <button type="submit" className="btn btn-grey btn-lg">Iniciar Sesión</button>
                                     </div>
                                 </form>
+<<<<<<< HEAD
                                 <div className="text-center mt-3">
                                     <a href="#">¿Olvidó su contraseña?</a>
+=======
+                                <div className="row align-items-center justify-content-center">
+                                    <div className="col-auto text-center">
+                                        ¿No tienes cuenta?
+                                    </div>
+                                    <div className="col-auto text-start">
+                                        <button type="submit" class="btn btn-outline-primary" onClick={handleRegister}>Regístrate</button>
+                                    </div>
+>>>>>>> 1eedc8e8d6f84a94ecd496270b422e1fee46f00f
                                 </div>
                             </div>
                         </div>
