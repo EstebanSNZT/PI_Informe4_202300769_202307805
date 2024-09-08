@@ -54,7 +54,6 @@ function Login() {
     };
 
     const handleForgotPassword = () => {
-        // Implementa la lógica para redirigir a la página de recuperación de contraseña
         navigate('/forgot-password');
     };
 

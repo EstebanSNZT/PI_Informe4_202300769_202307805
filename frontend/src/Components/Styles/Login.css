@@ -1,9 +1,9 @@
 /* FONDO PRINCIPAL */
 .login-background {
     background-image: url("https://i.redd.it/c3uhsgo1vx541.jpg");
-    background-size: cover; /* o contain, dependiendo de tu diseño */
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-repeat: no-repeat;
     position: fixed;
     top: 0;
     left: 0;
@@ -14,31 +14,24 @@
 
 /* Estilo para el enlace de "¿Olvidaste tu contraseña?" */
 .forgot-password-link {
-    font-size: 15px !important;  /* Tamaño del texto */
-    color: #007bff;     /* Color del enlace */
-    text-decoration: none; /* Quita el subrayado */
+    font-size: 15px !important;
+    color: #007bff;
+    text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
     margin-left: 20px;
-
 }
 
 .forgot-password-link:hover {
-    color: #0056b3;  /* Cambia de color al pasar el cursor */
-    text-decoration: underline; /* Añade subrayado al pasar el cursor */
+    color: #0056b3;
+    text-decoration: underline;
 }
 
 /* Estilo del contenedor de la tarjeta */
 .card {
-    background-color: #dbdbdbe3; /* Cambia este color al que prefieras */
-    border-radius: 10px; /* Esquinas redondeadas */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el efecto */
-}
-
-/* Estilo para la sección de inicio de sesión */
-.form-signin {
-    max-width: 100%;
-    padding: 1rem;
+    background-color: #dbdbdbe3;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilo cuando un campo de formulario está enfocado */
@@ -46,23 +39,10 @@
     z-index: 2;
 }
 
-/* Estilo para los campos de email y contraseña */
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
 /* Contenedor para tablas */
 .table-container {
-    margin: 0 auto; /* Centra horizontalmente */
-    min-width: 80%; /* Limita el ancho */
+    margin: 0 auto;
+    min-width: 80%;
 }
 
 /* Ajustes en la cabecera */
@@ -70,51 +50,51 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 100px; /* Aumentar el espacio entre la cabecera y el contenido inferior */
+    margin-bottom: 100px;
 }
 
 /* Estilo del logotipo */
 .login-header .logo {
-    width: 50px; /* Ajusta el tamaño del logo según tu necesidad */
-    margin-right: 10px; /* Espacio entre la imagen y el texto */
+    width: 50px;
+    margin-right: 10px;
 }
 
 /* Estilo del título */
 .login-title {
-    text-align: center; /* Centra el texto horizontalmente */
-    font-size: 1.15em; /* Ajusta el tamaño de fuente según sea necesario */
-    margin-bottom: 1px; /* Espacio debajo del título */
+    text-align: center;
+    font-size: 1.15em;
+    margin-bottom: 1px;
 }
 
 /* Contenedor de texto */
 .text-container {
     display: flex;
-    flex-direction: column; /* Alinea los elementos en una columna */
-    justify-content: center; /* Centra verticalmente los elementos en el contenedor */
-    align-items: center; /* Centra horizontalmente los elementos en el contenedor */
-    height: 100%; /* Asegúrate de que el contenedor tenga una altura adecuada */
-    text-align: center; /* Centra el texto dentro de cada elemento */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
 }
 
 .university {
-    margin: 0; /* Opcional: Elimina márgenes si es necesario */
-    font-size: 2em; /* Ajusta el tamaño de fuente según sea necesario */
+    margin: 0;
+    font-size: 2em;
 }
 
 .faculty {
-    margin: 0; /* Opcional: Elimina márgenes si es necesario */
-    font-size: 1.5em; /* Ajusta el tamaño de fuente según sea necesario */
+    margin: 0;
+    font-size: 1.5em;
 }
 
 /* Estilo para el enlace de "¿Olvidaste tu contraseña?" en la sección centrada */
 .text-center a {
-    font-size: 13px; /* Reducir tamaño del texto */
-    color: #007bff; /* Cambiar color del texto a azul */
-    text-decoration: none; /* Quitar el subrayado por defecto */
+    font-size: 13px;
+    color: #007bff;
+    text-decoration: none;
 }
 
 .text-center a:hover {
-    text-decoration: underline; /* Subrayado al pasar el cursor */
+    text-decoration: underline;
 }
 
 /* Estilo del botón */
@@ -122,63 +102,64 @@
     background-color: #b9b4b4;
     color: #000;
     border: none;
-    padding: 4px 20px; /* Tamaño del botón */
+    padding: 4px 20px;
     font-size: 16px;
-    width: 100%; /* Ocupa todo el ancho disponible */
-    max-width: 500px; /* Ancho máximo */
+    width: 100%;
+    max-width: 500px;
     display: block;
-    margin: 0 auto; /* Centrar horizontalmente */
-    margin-top: 1px; /* Minimizar el espacio superior entre botones */
-    border-radius: 5px; /* Esquinas redondeadas */
+    margin: 0 auto;
+    margin-top: 1px;
+    border-radius: 5px;
     font-weight: 500;
 }
 
 .btn-grey:hover {
-    background-color: #999; /* Color del botón al pasar el cursor */
+    background-color: #999;
 }
 
 /* Estilo del texto de registro */
 .registration-text {
-    font-size: 15px; /* Color del texto */
-    margin-top: 10px; /* Espacio superior ajustado */
-    margin-bottom: 0; /* Minimizar el espacio inferior */
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 0;
     font-weight: 480;
 }
 
 .register-link {
-    font-size: 16px !important; /* Forzar el tamaño */
-    font-weight: 600;   
-    color: rgba(29, 55, 83, 0.27); 
-    text-decoration: none; 
-    padding: 1px 0;    
+    font-size: 16px !important;
+    font-weight: 600;
+    color: rgba(29, 55, 83, 0.27);
+    text-decoration: none;
+    padding: 1px 0;
     display: inline-block;
-    transition: color 0.3s ease; 
+    transition: color 0.3s ease;
 }
 
-/* Opción para cambiar el color cuando el usuario pasa el mouse */
 .register-link:hover {
-    color: #046cdb; /* Cambia el color en hover */
+    color: #046cdb;
 }
-
 
 /* Estilo del texto de la universidad */
 .text-container h1.university {
-    font-size: 16px; /* Más pequeño para "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA" */
+    font-size: 16px;
     font-weight: normal;
-    margin: 0; /* Elimina márgenes para ajustar la alineación */
-    color: #333; /* Color del texto */
+    margin: 0;
+    color: #333;
 }
 
 /* Estilo para "Facultad de Ingeniería" */
 .text-container h2.faculty {
-    font-size: 22px; /* Más grande para "Facultad de Ingeniería" */
+    font-size: 22px;
     font-weight: bold;
-    margin: 0; /* Elimina márgenes para ajustar alineación */
-    color: #333; /* Color del texto */
+    margin: 0;
+    color: #333;
 }
 
 /* Ajustar margen superior de los campos de formulario */
 .form-floating {
-    margin-top: 15px; /* Añadir espacio superior para separar del título */
-    margin-bottom: 10px; /* Mantener separación entre los campos */
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
+
+
+

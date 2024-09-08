@@ -1,0 +1,77 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el registro */
+.register-background {
+    background-color: #e8f5e9;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.register-form .form-label {
+    font-weight: bold;
+}
+
+.register-form .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+}
+
+.register-form .form-select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+}
+
+.register-form .invalid-feedback {
+    color: #dc3545;
+}
+
+.btn-register {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-register:hover {
+    background-color: #388e3c;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
