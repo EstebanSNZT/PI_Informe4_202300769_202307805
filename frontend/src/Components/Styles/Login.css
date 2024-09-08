@@ -1,14 +1,38 @@
-/* Fondo de pantalla */
+/* FONDO PRINCIPAL */
 .login-background {
-    background-image: url('../Images/fondo.jpg');
-    background-size: cover;
+    background-image: url("https://i.redd.it/c3uhsgo1vx541.jpg");
+    background-size: cover; /* o contain, dependiendo de tu diseño */
     background-position: center;
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+/* Estilo para el enlace de "¿Olvidaste tu contraseña?" */
+.forgot-password-link {
+    font-size: 15px !important;  /* Tamaño del texto */
+    color: #007bff;     /* Color del enlace */
+    text-decoration: none; /* Quita el subrayado */
+    transition: color 0.3s ease;
+    font-weight: 500;
+    margin-left: 20px;
+
+}
+
+.forgot-password-link:hover {
+    color: #0056b3;  /* Cambia de color al pasar el cursor */
+    text-decoration: underline; /* Añade subrayado al pasar el cursor */
+}
+
+/* Estilo del contenedor de la tarjeta */
+.card {
+    background-color: #dbdbdbe3; /* Cambia este color al que prefieras */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el efecto */
 }
 
 /* Estilo para la sección de inicio de sesión */
@@ -46,7 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 100px; /* Aumentar el espacio entre la cabecera y los globos de texto */
+    margin-bottom: 100px; /* Aumentar el espacio entre la cabecera y el contenido inferior */
 }
 
 /* Estilo del logotipo */
@@ -58,8 +82,8 @@
 /* Estilo del título */
 .login-title {
     text-align: center; /* Centra el texto horizontalmente */
-    font-size: 1.25em; /* Ajusta el tamaño de fuente según sea necesario */
-    margin-bottom: 20px; /* Espacio debajo del título */
+    font-size: 1.15em; /* Ajusta el tamaño de fuente según sea necesario */
+    margin-bottom: 1px; /* Espacio debajo del título */
 }
 
 /* Contenedor de texto */
@@ -82,7 +106,7 @@
     font-size: 1.5em; /* Ajusta el tamaño de fuente según sea necesario */
 }
 
-/* Estilo para el enlace de "¿Olvidó su contraseña?" en la sección centrada */
+/* Estilo para el enlace de "¿Olvidaste tu contraseña?" en la sección centrada */
 .text-center a {
     font-size: 13px; /* Reducir tamaño del texto */
     color: #007bff; /* Cambiar color del texto a azul */
@@ -95,21 +119,47 @@
 
 /* Estilo del botón */
 .btn-grey {
-    background-color: #ccc;
+    background-color: #b9b4b4;
     color: #000;
     border: none;
-    padding: 8px 20px; /* Mantener padding vertical delgado */
+    padding: 4px 20px; /* Tamaño del botón */
     font-size: 16px;
-    width: 100%; /* El botón ocupará todo el ancho disponible */
-    max-width: 500px; /* Aumentar ancho máximo para alargar más el botón */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 500px; /* Ancho máximo */
     display: block;
-    margin: 0 auto; /* Centrar el botón horizontalmente */
-    margin-top: 40px;
+    margin: 0 auto; /* Centrar horizontalmente */
+    margin-top: 1px; /* Minimizar el espacio superior entre botones */
+    border-radius: 5px; /* Esquinas redondeadas */
+    font-weight: 500;
 }
 
 .btn-grey:hover {
-    background-color: #999;
+    background-color: #999; /* Color del botón al pasar el cursor */
 }
+
+/* Estilo del texto de registro */
+.registration-text {
+    font-size: 15px; /* Color del texto */
+    margin-top: 10px; /* Espacio superior ajustado */
+    margin-bottom: 0; /* Minimizar el espacio inferior */
+    font-weight: 480;
+}
+
+.register-link {
+    font-size: 16px !important; /* Forzar el tamaño */
+    font-weight: 600;   
+    color: rgba(29, 55, 83, 0.27); 
+    text-decoration: none; 
+    padding: 1px 0;    
+    display: inline-block;
+    transition: color 0.3s ease; 
+}
+
+/* Opción para cambiar el color cuando el usuario pasa el mouse */
+.register-link:hover {
+    color: #046cdb; /* Cambia el color en hover */
+}
+
 
 /* Estilo del texto de la universidad */
 .text-container h1.university {
