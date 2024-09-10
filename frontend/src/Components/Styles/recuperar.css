@@ -1,0 +1,84 @@
+/* Fondo del componente Recuperar Contraseña */
+.recover-background {
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/18acd369-ea44-471b-aeeb-9e6e8e3ed9d5/dfnxak0-a0a19958-0048-4def-b585-a3c605c9ee85.png/v1/fill/w_876,h_584,q_80,strp/4k_ultra_hd___wallpaper_by_themingarts_dfnxak0-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTg0IiwicGF0aCI6IlwvZlwvMThhY2QzNjktZWE0NC00NzFiLWFlZWItOWU2ZThlM2VkOWQ1XC9kZm54YWswLWEwYTE5OTU4LTAwNDgtNGRlZi1iNTg1LWEzYzYwNWM5ZWU4NS5wbmciLCJ3aWR0aCI6Ijw9ODc2In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.2FqUns-azN-VzXM_a6JlBsUbZmCPoflffxSwqhaPxQg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Estilo del contenedor del formulario */
+.card {
+    background-color: rgba(245, 232, 227, 0.897); /* Fondo blanco semi-transparente */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid;
+    border-image: linear-gradient(to right, rgba(255, 149, 0, 0.864),  rgba(255, 149, 0, 0.864), rgba(255, 149, 0, 0.864)); /* Gradiente RGB */
+    border-image-slice: 1;
+}
+
+/* Estilo del título de la tarjeta */
+.card-title {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: #333;
+}
+
+/* Estilo del formulario */
+.recover-form {
+    margin: 20px;
+}
+
+.form-label {
+    font-size: 1em; /* Tamaño del texto */
+    font-weight: 550; /* Peso del texto para destacarlo */
+    color: #333333e4; /* Color del texto */
+    margin-bottom: 0.3em; /* Espaciado inferior entre la etiqueta y el campo */
+    display: block; /* Asegura que la etiqueta ocupe toda la anchura disponible */
+}
+
+/* Estilo para los campos de formulario */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #f1d53a;
+    padding: 10px;
+}
+
+/* Estilo cuando un campo de formulario está enfocado */
+.form-control:focus {
+    border-color: #bb00ff;
+    box-shadow: 0 0 0 0.2rem rgba(204, 0, 255, 0.25);
+}
+
+/* Estilo de los botones */
+.btn-primary {
+    background-color: #fa7358da;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #302f2f;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #e8b040;
+}
+
+/* Estilo del enlace de redirección */
+.back-to-login {
+    font-size: 15px;
+    color: #fffb00;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-to-login:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

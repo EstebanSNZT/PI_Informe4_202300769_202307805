@@ -194,9 +194,9 @@ function Register() {
                     </div>
                 </form>
                 <div className="row align-items-center justify-content-center mt-3">
-                    <div className="col-auto text-center">
-                        ¿Ya tienes cuenta?
-                    </div>
+                         <div className="col-auto text-center pregunta-cuenta">
+                         ¿Ya tienes cuenta?
+                            </div>
                     <div className="col-auto text-center">
                         <button type="button" className="btn btn-link" onClick={handleLogin}>Iniciar sesión</button>
                     </div>

@@ -8,30 +8,67 @@ body {
 
 /* Estilos para el registro */
 .register-background {
-    background-color: #e8f5e9;
+    background-image: url("https://asset.gecdesigns.com/img/wallpapers/beautiful-fantasy-wallpaper-ultra-hd-wallpaper-4k-sr10012418-1706506236698-cover.webp");
+    background-color: #e8f5e9b0;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.pregunta-cuenta {
+    color: #fdfbfb; /* Mantiene el color original */
+}
+
+
+/* Cambiar el color de fondo y el color del texto de los inputs */
+.register-form .form-control {
+    background-color: #eff5f5c3; /* Color de fondo personalizado */
+    color: #333; /* Color del texto */
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+/* Cambiar el color de fondo y el color del texto de los selects */
+.register-form .form-select {
+    background-color: #f0e8ff; /* Color de fondo personalizado */
+    color: #333; /* Color del texto */
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+/* Cambiar el color de fondo cuando el campo está seleccionado (focus) */
+.register-form .form-control:focus, 
+.register-form .form-select:focus {
+    background-color: #e8dcff; /* Un color más claro para el enfoque */
+    border-color: #a666c6; /* Bordes en un color destacado */
+    outline: none; /* Eliminar el borde azul predeterminado */
+}
+
+
 .register-card {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.701);
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgb(201, 8, 8);
     padding: 30px;
     width: 100%;
     max-width: 600px;
 }
 
 .card-title {
-    font-size: 24px;
+    font-size: 24px;    
     font-weight: bold;
     margin-bottom: 20px;
+    color: #ffffff; /* Cambia el color de "Registro" a blanco */
 }
 
 .register-form .form-label {
     font-weight: bold;
+    color: #ffffffe6; /* Cambia el color de la letra de los labels */
 }
 
 .register-form .form-control {
@@ -51,13 +88,20 @@ body {
 }
 
 .btn-register {
-    background-color: #4caf50;
+    background-color: #a666c6;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+}
+
+.register-card .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffffe8 !important; /* Usa !important para forzar el color */
 }
 
 .btn-register:hover {
@@ -70,6 +114,10 @@ body {
 
 .mt-3 {
     margin-top: 1rem;
+}
+
+.register-form .text-center {
+    color: #201313; /* Cambia el color del texto "¿Ya tienes cuenta?" a blanco */
 }
 
 .mb-4 {

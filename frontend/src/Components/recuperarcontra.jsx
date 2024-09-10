@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Styles/recuperarcontra.css'; // Asegúrate de que la ruta al CSS sea correcta
+import './Styles/recuperar.css'; // Asegúrate de que la ruta al CSS sea correcta
 
 function RecuperarContra() {
     const [codigo, setCodigo] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(''); 
     const [nuevaContrasenia, setNuevaContrasenia] = useState('');
     const [confirmarContrasenia, setConfirmarContrasenia] = useState('');
     const navigate = useNavigate();

@@ -29,9 +29,13 @@
 
 /* Estilo del contenedor de la tarjeta */
 .card {
-    background-color: #dbdbdbe3;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #dbdbdbe3; /* Fondo de la tarjeta */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    border: 5px solid; /* Ancho del borde */
+    border-image: linear-gradient(to right, rgba(43, 42, 42, 0.616), rgb(43, 42, 42, 0.616),rgba(43, 42, 42, 0.616)); /* Gradiente RGB */
+    border-image-slice: 1; /* Ajuste del borde con el gradiente */
+    padding: 20px; /* Espaciado interno */
 }
 
 /* Estilo cuando un campo de formulario está enfocado */
@@ -74,6 +78,12 @@
     align-items: center;
     height: 100%;
     text-align: center;
+    border: 5px solid;
+    border-image: linear-gradient(to right, rgba(171, 171, 171, 0.311), rgba(171, 171, 171, 0.311), rgba(171, 171, 171, 0.311));
+    border-image-slice: 1;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(212, 209, 209); /* Fondo semi-transparente */
 }
 
 .university {
@@ -160,6 +170,3 @@
     margin-top: 15px;
     margin-bottom: 10px;
 }
-
-
-
