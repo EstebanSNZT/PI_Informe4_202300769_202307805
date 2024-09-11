@@ -47,14 +47,35 @@ app.get("/getUsers", (req, res) => {
 
 app.post("/newUser", (req, res) => {
     const newUser = req.body;
+    const values = [newUser.carnet, `${newUser.nombres} ${newUser.apellidos}`, newUser.genero, newUser.facultad, newUser.carrera, newUser.correo, newUser.contrasenia]
     const sql = 'INSERT INTO users (carnet, nombre_completo, genero, facultad, carrera, correo, contrasenia) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    console.log(newUser);
-    db.query(sql, [newUser.carnet, `${newUser.nombres} ${newUser.apellidos}`, newUser.genero, newUser.facultad, newUser.carrera, newUser.correo, newUser.contrasenia], (err, result) => {
+    db.query(sql, values, (err, result) => {
         if (err) {
-            res.status(500).send({ response: "Error al crear usuario." });
-        } else {
-            res.status(201).send({ response: "Usuario creado correctamente." });
+            console.error('Error al crear el usuario:', err);
+            return res.status(500).json({ response: "Error al crear el usuario." });
         }
+        res.status(201).json({ response: "Usuario creado correctamente." });
+    });
+});
+
+app.post("/newPost", (req, res) => {
+    const newPost = req.body;
+    
+    if (newPost.tipo_publicacion === 'Curso') {
+        sql = 'INSERT INTO posts (carnet, tipo_publicacion, id_curso, mensaje) VALUES (?, ?, ?, ?)';
+        values = [newPost.carnet, newPost.tipo_publicacion, newPost.id_curso, newPost.mensaje];
+    } else if (newPost.tipo_publicacion === 'Catedratico') {
+        sql = 'INSERT INTO posts (carnet, tipo_publicacion, id_catedratico, mensaje) VALUES (?, ?, ?, ?)';
+        values = [newPost.carnet, newPost.tipo_publicacion, newPost.id_catedratico, newPost.mensaje];
+    }
+
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            console.error('Error al crear el post:', err);
+            return res.status(500).json({ success: false, message: 'Error al crear el post.' });
+        }
+
+        res.status(201).json({ success: true, message: 'Post creado exitosamente.' });
     });
 });
 
@@ -83,7 +104,7 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.post("/recoverPassword", (req, res) => {
+app.put("/recoverPassword", (req, res) => {
     const data= req.body;
 
     const sqlUpdate = 'UPDATE users SET contrasenia = ? WHERE carnet = ? AND correo = ?';

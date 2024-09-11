@@ -4,47 +4,49 @@ import './Styles/recuperar.css'; // Asegúrate de que la ruta al CSS sea correct
 
 function RecuperarContra() {
     const [carnet, setCarnet] = useState('');
-    const [correo, setCorreo] = useState(''); 
-    const [nuevaContrasenia, setNuevaContrasenia] = useState('');
-    const [confirmarContrasenia, setConfirmarContrasenia] = useState('');
+    const [email, setEmail] = useState(''); 
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        if (nuevaContrasenia !== confirmarContrasenia) {
+    
+        if (newPassword !== confirmPassword) {
             alert("Las contraseñas no coinciden.");
             return;
         }
-
+    
         const data = {
             carnet: parseInt(carnet, 10),
-            correo: correo,
-            nuevaContrasenia: nuevaContrasenia
+            correo: email,
+            nuevaContrasenia: newPassword
         };
-
-        fetch(`http://localhost:5000/recoverPassword`, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                alert(res.message);
-                setCarnet("");
-                setCorreo("");
-                setNuevaContrasenia("");
-                setConfirmarContrasenia("");
-                if (res.success) {
-                    navigate('/login');
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-                alert("Hubo un error con el servidor. Inténtalo nuevamente.");
+    
+        try {
+            const response = await fetch('http://localhost:5000/recoverPassword', {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             });
+    
+            const res = await response.json();
+            alert(res.message);
+            
+            setCarnet('');
+            setEmail('');
+            setNewPassword('');
+            setConfirmPassword('');
+    
+            if (res.success) {
+                navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Hubo un error con el servidor. Inténtalo nuevamente.');
+        }
     };
 
     const handleLoginRedirect = () => {
@@ -78,8 +80,8 @@ function RecuperarContra() {
                                             type="email"
                                             className="form-control"
                                             id="emailInput"
-                                            onChange={(e) => setCorreo(e.target.value)}
-                                            value={correo}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            value={email}
                                             required
                                         />
                                     </div>
@@ -89,8 +91,8 @@ function RecuperarContra() {
                                             type="password"
                                             className="form-control"
                                             id="nuevaContraseniaInput"
-                                            onChange={(e) => setNuevaContrasenia(e.target.value)}
-                                            value={nuevaContrasenia}
+                                            onChange={(e) => setNewPassword(e.target.value)}
+                                            value={newPassword}
                                             required
                                         />
                                     </div>
@@ -100,8 +102,8 @@ function RecuperarContra() {
                                             type="password"
                                             className="form-control"
                                             id="confirmarContraseniaInput"
-                                            onChange={(e) => setConfirmarContrasenia(e.target.value)}
-                                            value={confirmarContrasenia}
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
+                                            value={confirmPassword}
                                             required
                                         />
                                     </div>

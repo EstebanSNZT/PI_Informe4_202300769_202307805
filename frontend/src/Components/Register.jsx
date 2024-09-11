@@ -14,12 +14,14 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate(); // Hook para la navegación
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+    
         if (password !== confirmPassword) {
             alert("Las contraseñas no coinciden.");
             return;
         }
+    
         const newUser = {
             carnet: parseInt(carnet, 10),
             nombres: names,
@@ -30,20 +32,24 @@ function Register() {
             correo: email,
             contrasenia: password
         };
-
-        fetch(`http://localhost:5000/newUser`, {
-            method: "POST",
-            body: JSON.stringify(newUser),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                console.log(res);
-                navigate('/login'); // Redirige al login después de un registro exitoso
-            })
-            .catch((error) => console.error(error));
+    
+        try {
+            const response = await fetch(`http://localhost:5000/newUser`, {
+                method: "POST",
+                body: JSON.stringify(newUser),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+    
+            const res = await response.json();
+            console.log(res);
+    
+            navigate('/login');
+            
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const handleLogin = () => {

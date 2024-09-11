@@ -6,46 +6,48 @@ import logo1 from './Images/logo1.png'; // Importa la imagen
 
 function Login() {
     const [carnet, setCarnet] = useState('');
-    const [contrasenia, setContrasenia] = useState('');
+    const [password, setPassword] = useState('');
     const [cookie, setCookie] = useCookies(['user']);
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (!carnet || !contrasenia) {
+        if (!carnet || !password) {
             alert("Por favor, ingresa todos los campos.");
             return;
         }
 
         const data = {
             carnet: parseInt(carnet, 10),
-            contrasenia: contrasenia
+            contrasenia: password
         };
 
-        fetch(`http://localhost:5000/login`, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((res) => {
-                if (res.success) {
-                    const dataUser = res.user;
-                    setCookie('user', dataUser);
-                    navigate('/inicio');
-                } else {
-                    alert("Número de carnet y/o contraseña incorrectos.");
-                }
-                setCarnet("");
-                setContrasenia("");
-            })
-            .catch((error) => {
-                console.error(error);
-                alert("Hubo un error con el servidor. Inténtalo nuevamente.");
+        try {
+            const response = await fetch(`http://localhost:5000/login`, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
+
+            const res = await response.json();
+
+            if (res.success) {
+                const dataUser = res.user;
+                setCookie('user', dataUser);
+                navigate('/inicio');
+            } else {
+                alert("Número de carnet y/o contraseña incorrectos.");
+            }
+
+            setCarnet("");
+            setPassword("");
+        } catch (error) {
+            console.error(error);
+            alert("Hubo un error con el servidor. Inténtalo nuevamente.");
+        }
     };
 
     const handleRegister = () => {
@@ -90,8 +92,8 @@ function Login() {
                                             type="password"
                                             className="form-control"
                                             placeholder="Contraseña"
-                                            onChange={(e) => setContrasenia(e.target.value)}
-                                            value={contrasenia}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            value={password}
                                             required
                                         />
                                         <label htmlFor="contrasenia">Contraseña</label>
