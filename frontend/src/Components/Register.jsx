@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './Styles/test.css';
 
 function Register() {
-    const [code, setCode] = useState('');
+    const [carnet, setCarnet] = useState('');
     const [names, setNames] = useState('');
     const [lastNames, setLastNames] = useState('');
     const [gender, setGender] = useState('');
@@ -21,7 +21,7 @@ function Register() {
             return;
         }
         const newUser = {
-            codigo: parseInt(code, 10),
+            carnet: parseInt(carnet, 10),
             nombres: names,
             apellidos: lastNames,
             genero: gender,
@@ -31,7 +31,7 @@ function Register() {
             contrasenia: password
         };
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`http://localhost:5000/newUser`, {
             method: "POST",
             body: JSON.stringify(newUser),
             headers: {
@@ -41,7 +41,6 @@ function Register() {
             .then((response) => response.json())
             .then((res) => {
                 console.log(res);
-                alert(`Se ha creado su usuario ${newUser.nombres} ${newUser.apellidos}`);
                 navigate('/login'); // Redirige al login después de un registro exitoso
             })
             .catch((error) => console.error(error));
@@ -75,8 +74,8 @@ function Register() {
                             type="number"
                             className="form-control"
                             id="codeInput"
-                            onChange={(e) => setCode(e.target.value)}
-                            value={code}
+                            onChange={(e) => setCarnet(e.target.value)}
+                            value={carnet}
                             required
                         />
                         <div className="invalid-feedback">Por favor ingrese un número de carnet/código USAC.</div>

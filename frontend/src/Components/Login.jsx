@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import logo1 from './Images/logo1.png'; // Importa la imagen
 
 function Login() {
-    const [codigo, setCodigo] = useState('');
+    const [carnet, setCarnet] = useState('');
     const [contrasenia, setContrasenia] = useState('');
     const [cookie, setCookie] = useCookies(['user']);
     const navigate = useNavigate();
@@ -13,13 +13,13 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (!codigo || !contrasenia) {
+        if (!carnet || !contrasenia) {
             alert("Por favor, ingresa todos los campos.");
             return;
         }
 
         const data = {
-            codigo: parseInt(codigo, 10),
+            carnet: parseInt(carnet, 10),
             contrasenia: contrasenia
         };
 
@@ -34,13 +34,12 @@ function Login() {
             .then((res) => {
                 if (res.success) {
                     const dataUser = res.user;
-                    alert(`Bienvenido: ${dataUser.nombres} ${dataUser.apellidos}`);
                     setCookie('user', dataUser);
                     navigate('/inicio');
                 } else {
                     alert("Número de carnet y/o contraseña incorrectos.");
                 }
-                setCodigo("");
+                setCarnet("");
                 setContrasenia("");
             })
             .catch((error) => {
@@ -80,8 +79,8 @@ function Login() {
                                             type="number"
                                             className="form-control"
                                             placeholder="202400000"
-                                            onChange={(e) => setCodigo(e.target.value)}
-                                            value={codigo}
+                                            onChange={(e) => setCarnet(e.target.value)}
+                                            value={carnet}
                                             required
                                         />
                                         <label htmlFor="codigo">CUI / REGISTRO ACADEMICO / REGISTRO PERSONAL</label>

@@ -6,19 +6,13 @@ const moment = require('moment/moment');
 const mysql = require('mysql2');
 
 const app = express();
-<<<<<<< HEAD
-const PORT = 5001;
-const FILEUSERS = 'users.json';
-const FILEPOSTS = 'posts.json';
-=======
 const PORT = 5000;
->>>>>>> 1eedc8e8d6f84a94ecd496270b422e1fee46f00f
 
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'milo$ekiro12',
-    database: 'storage'
+    user: 'default_user',
+    password: '',
+    database: 'db_users'
 });
 
 app.use(bodyParser.json({ limit: '80mb' }));
@@ -51,10 +45,11 @@ app.get("/getUsers", (req, res) => {
     });
 });
 
-app.post("/users", (req, res) => {
+app.post("/newUser", (req, res) => {
     const newUser = req.body;
-    const sql = 'INSERT INTO users (codigo, nombres, apellidos, genero, facultad, carrera, correo, contrasenia) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    db.query(sql, [newUser.codigo, newUser.nombres, newUser.apellidos, newUser.genero, newUser.facultad, newUser.carrera, newUser.correo, newUser.contrasenia], (err, result) => {
+    const sql = 'INSERT INTO users (carnet, nombre_completo, genero, facultad, carrera, correo, contrasenia) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    console.log(newUser);
+    db.query(sql, [newUser.carnet, `${newUser.nombres} ${newUser.apellidos}`, newUser.genero, newUser.facultad, newUser.carrera, newUser.correo, newUser.contrasenia], (err, result) => {
         if (err) {
             res.status(500).send({ response: "Error al crear usuario." });
         } else {
@@ -67,8 +62,8 @@ app.post("/login", (req, res) => {
     const data = req.body;
     console.log(data);
 
-    const sql = 'SELECT * FROM users WHERE codigo = ? AND contrasenia = ?';
-    db.query(sql, [data.codigo, data.contrasenia], (err, results) => {
+    const sql = 'SELECT * FROM users WHERE carnet = ? AND contrasenia = ?';
+    db.query(sql, [data.carnet, data.contrasenia], (err, results) => {
         if (err) {
             return res.status(500).send({ success: false, message: "Error en la consulta de base de datos." });
         }
