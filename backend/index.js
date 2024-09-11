@@ -60,9 +60,8 @@ app.post("/newUser", (req, res) => {
 
 app.post("/login", (req, res) => {
     const data = req.body;
-    console.log(data);
-
     const sql = 'SELECT * FROM users WHERE carnet = ? AND contrasenia = ?';
+
     db.query(sql, [data.carnet, data.contrasenia], (err, results) => {
         if (err) {
             return res.status(500).send({ success: false, message: "Error en la consulta de base de datos." });
@@ -73,14 +72,33 @@ app.post("/login", (req, res) => {
                 success: false,
                 user: null
             };
-            return res.status(404).send(response);
+            res.status(404).send(response);
         } else {
             const response = {
                 success: true,
                 user: results[0],
             };
-            return res.json(response);
+            res.json(response);
         }
+    });
+});
+
+app.post("/recoverPassword", (req, res) => {
+    const data= req.body;
+
+    const sqlUpdate = 'UPDATE users SET contrasenia = ? WHERE carnet = ? AND correo = ?';
+    db.query(sqlUpdate, [data.nuevaContrasenia, data.carnet, data.correo], (err, result) => {
+        
+        if (err) {
+            console.error('Error en la consulta de la base de datos: ' + err.stack);
+            return res.status(500).json({ success: false, message: 'Error en la consulta de la base de datos.' });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ success: false, message: 'Usuario no encontrado.' });
+        }
+
+        res.status(200).json({ success: true, message: 'Contraseña actualizada correctamente.' });
     });
 });
 

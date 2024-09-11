@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import './Styles/recuperar.css'; // Asegúrate de que la ruta al CSS sea correcta
 
 function RecuperarContra() {
-    const [codigo, setCodigo] = useState('');
-    const [email, setEmail] = useState(''); 
+    const [carnet, setCarnet] = useState('');
+    const [correo, setCorreo] = useState(''); 
     const [nuevaContrasenia, setNuevaContrasenia] = useState('');
     const [confirmarContrasenia, setConfirmarContrasenia] = useState('');
     const navigate = useNavigate();
@@ -18,12 +18,12 @@ function RecuperarContra() {
         }
 
         const data = {
-            codigo: parseInt(codigo, 10),
-            email: email,
+            carnet: parseInt(carnet, 10),
+            correo: correo,
             nuevaContrasenia: nuevaContrasenia
         };
 
-        fetch(`http://localhost:5000/recuperar-contrasena`, {
+        fetch(`http://localhost:5000/recoverPassword`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -32,16 +32,14 @@ function RecuperarContra() {
         })
             .then((response) => response.json())
             .then((res) => {
-                if (res.success) {
-                    alert("Contraseña actualizada con éxito.");
-                    navigate('/login');
-                } else {
-                    alert("Datos incorrectos. Por favor verifica el código y el correo electrónico.");
-                }
-                setCodigo("");
-                setEmail("");
+                alert(res.message);
+                setCarnet("");
+                setCorreo("");
                 setNuevaContrasenia("");
                 setConfirmarContrasenia("");
+                if (res.success) {
+                    navigate('/login');
+                }
             })
             .catch((error) => {
                 console.error(error);
@@ -68,8 +66,8 @@ function RecuperarContra() {
                                             type="number"
                                             className="form-control"
                                             id="codigoInput"
-                                            onChange={(e) => setCodigo(e.target.value)}
-                                            value={codigo}
+                                            onChange={(e) => setCarnet(e.target.value)}
+                                            value={carnet}
                                             required
                                         />
                                         <div className="invalid-feedback">Por favor ingrese un número de carnet/código USAC.</div>
@@ -80,8 +78,8 @@ function RecuperarContra() {
                                             type="email"
                                             className="form-control"
                                             id="emailInput"
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            value={email}
+                                            onChange={(e) => setCorreo(e.target.value)}
+                                            value={correo}
                                             required
                                         />
                                     </div>

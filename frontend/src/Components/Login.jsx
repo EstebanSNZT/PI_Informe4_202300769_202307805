@@ -49,11 +49,11 @@ function Login() {
     };
 
     const handleRegister = () => {
-        navigate('/register');
+        navigate('/registro');
     };
 
     const handleForgotPassword = () => {
-        navigate('/forgot-password');
+        navigate('/contraseña_olvidada');
     };
 
     return (

@@ -11,8 +11,8 @@ function Router() {
                 <Route path='/' element={<Navigate to="/login"/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/inicio' element={<Home/>}/>
-                <Route path='/register' element={<Register/>}/>
-                <Route path="/forgot-password" element={<RecuperarContra />} />
+                <Route path='/registro' element={<Register/>}/>
+                <Route path="/contraseña_olvidada" element={<RecuperarContra/>} />
             </Routes>
         </BrowserRouter>
     );
