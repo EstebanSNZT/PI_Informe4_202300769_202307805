@@ -1,0 +1,139 @@
+/* Fondo de la página */
+.body2 {
+    background-color: #9e5252;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://www.tuexperto.com/wp-content/uploads/2022/01/paginas-descargar-fondos-de-pantalla.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Fondo estilizado */
+.fondo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 10px solid black; /* Bordes gruesos */
+}
+
+/* Contenedor del formulario: más ancho */
+.container1 {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 950px; /*--------- Aumenta el ancho para que ocupe todo el espacio disponible */
+    max-width: 100%;
+    box-sizing: border-box;
+    position: center;
+    display: flex;
+    flex-direction: column; /*--------- Cambié a columna para que los elementos se distribuyan verticalmente */
+    justify-content: space-between;
+}
+
+/* Encabezado del formulario */
+.letrad {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 3px solid black;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+/* Selector de categorías */
+.select {
+    width: 100%; /*--------- Ahora ocupa todo el ancho del contenedor */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Estado de publicación */
+.estadoPublicacion {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row; /*--------- Ajustado a fila para que el switch y el texto estén en línea */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /*--------- Ocupa todo el ancho */
+}
+
+/* Formato del texto y el textarea */
+textarea {
+    width: 100%; /*--------- El textarea ocupa todo el ancho */
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Vista previa de la imagen */
+img {
+    display: block;
+    margin: 10px auto;
+    max-width: 150px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Botón para crear publicación */
+button {
+    width: 100%; /*--------- El botón ahora ocupa todo el ancho del contenedor */
+    padding: 12px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Estilos para los inputs */
+input[type="text"],
+textarea {
+    width: 100%; /*--------- Los inputs ocupan todo el ancho */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Fondo del formulario */
+.form-container {
+    border: 5px solid black;
+    padding: 10px;
+    background-color: white;
+}
