@@ -45,6 +45,31 @@ app.get("/getUsers", (req, res) => {
     });
 });
 
+app.get("/getProfessors", (req, res) => {
+    const sql = 'SELECT * FROM professors'
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.error('Error en la consulta: ' + error.stack);
+        res.status(500).json({ error: 'Error en la consulta a la base de datos' });
+        return;
+      }
+      res.json(results);
+    });
+});
+
+app.get("/getCourses", (req, res) => {
+    const sql = 'SELECT * FROM courses'
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.error('Error en la consulta: ' + error.stack);
+        res.status(500).json({ error: 'Error en la consulta a la base de datos' });
+        return;
+      }
+
+      res.json(results);
+    });
+});
+
 app.post("/newUser", (req, res) => {
     const newUser = req.body;
     const values = [newUser.carnet, `${newUser.nombres} ${newUser.apellidos}`, newUser.genero, newUser.facultad, newUser.carrera, newUser.correo, newUser.contrasenia]
