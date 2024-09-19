@@ -1,4 +1,6 @@
 USE db_users;
+ALTER TABLE posts MODIFY COLUMN tipo_publicacion ENUM('Curso', 'Catedrático');
+ALTER TABLE posts ADD COLUMN imagen_base64 LONGTEXT;
 
 INSERT INTO professors (nombre_catedratico) VALUES ('ROGELIO ALFREDO SALAZAR DE LEON');
 INSERT INTO professors (nombre_catedratico) VALUES ('EDUARDO MARTIN RIVERA PÉREZ');

@@ -70,6 +70,32 @@ app.get("/getCourses", (req, res) => {
     });
 });
 
+app.get("/getPosts", (req, res) => {
+    const sql = 'SELECT posts.id_publicacion, posts.tipo_publicacion, posts.mensaje, posts.fecha_creacion, posts.imagen_base64, users.nombre_completo AS nombre_usuario, users.facultad, users.carrera, professors.nombre_catedratico, courses.nombre_curso FROM posts INNER JOIN users ON posts.carnet = users.carnet LEFT JOIN professors ON posts.id_catedratico = professors.id_catedratico LEFT JOIN courses ON posts.id_curso = courses.id_curso'
+    db.query(sql, (error, results) => {
+      if (error) {
+        console.error('Error en la consulta: ' + error.stack);
+        res.status(500).json({ error: 'Error en la consulta a la base de datos' });
+        return;
+      }
+
+      res.json(results);
+    });
+});
+
+app.get("/getComments/:postId", (req, res) => {
+    const postId = req.params.postId;
+    const sql = 'SELECT comments.id_comentario, comments.comentario, comments.fecha_creacion, users.nombre_completo AS nombre_usuario, users.facultad, users.carrera FROM comments INNER JOIN users ON comments.carnet = users.carnet WHERE comments.id_publicacion = ?';
+    db.query(sql, [postId], (err, results) => {
+        if (err) {
+            console.error('Error al obtener los comentarios:', err);
+            return res.status(500).json({ error: 'Error al obtener los comentarios.' });
+        }
+
+        res.json(results);
+    });
+});
+
 app.post("/newUser", (req, res) => {
     const newUser = req.body;
     const values = [newUser.carnet, `${newUser.nombres} ${newUser.apellidos}`, newUser.genero, newUser.facultad, newUser.carrera, newUser.correo, newUser.contrasenia]
@@ -85,22 +111,36 @@ app.post("/newUser", (req, res) => {
 
 app.post("/newPost", (req, res) => {
     const newPost = req.body;
-    
+    let sql, values;    
     if (newPost.tipo_publicacion === 'Curso') {
-        sql = 'INSERT INTO posts (carnet, tipo_publicacion, id_curso, mensaje) VALUES (?, ?, ?, ?)';
-        values = [newPost.carnet, newPost.tipo_publicacion, newPost.id_curso, newPost.mensaje];
-    } else if (newPost.tipo_publicacion === 'Catedratico') {
-        sql = 'INSERT INTO posts (carnet, tipo_publicacion, id_catedratico, mensaje) VALUES (?, ?, ?, ?)';
-        values = [newPost.carnet, newPost.tipo_publicacion, newPost.id_catedratico, newPost.mensaje];
+        sql = 'INSERT INTO posts (carnet, tipo_publicacion, id_curso, mensaje, imagen_base64) VALUES (?, ?, ?, ?, ?)';
+        values = [newPost.carnet, newPost.tipo_publicacion, newPost.id, newPost.mensaje, newPost.imagen];
+    } else if (newPost.tipo_publicacion === 'Catedrático') {
+        sql = 'INSERT INTO posts (carnet, tipo_publicacion, id_catedratico, mensaje, imagen_base64) VALUES (?, ?, ?, ?, ?)';
+        values = [newPost.carnet, newPost.tipo_publicacion, newPost.id, newPost.mensaje, newPost.imagen];
     }
 
     db.query(sql, values, (err, result) => {
         if (err) {
             console.error('Error al crear el post:', err);
-            return res.status(500).json({ success: false, message: 'Error al crear el post.' });
+            return res.status(500).json({ response: 'Error al crear el post.' });
         }
 
-        res.status(201).json({ success: true, message: 'Post creado exitosamente.' });
+        res.status(201).json({ response: 'Post creado exitosamente.' });
+    });
+});
+
+app.post("/newComment", (req, res) => {
+    const newComment = req.body;
+    const sql = 'INSERT INTO comments (id_publicacion, carnet, comentario) VALUES (?, ?, ?)'
+    const values = [newComment.id_publicacion, newComment.carnet, newComment.comentario];   
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            console.error('Error al crear el comentario:', err);
+            return res.status(500).json({ response: 'Error al crear el comentario.' });
+        }
+
+        res.status(201).json({ response: 'Comentario creado exitosamente.' });
     });
 });
 
