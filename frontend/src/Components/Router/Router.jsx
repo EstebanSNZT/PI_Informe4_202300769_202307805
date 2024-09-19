@@ -5,6 +5,7 @@ import OtherHome from '../OtherHome';
 import Register from '../Register';
 import RecuperarContra from '../recuperarcontra';
 import CrearPost from '../crearpost';
+import PerfilPersonal from '../perfil';
 
 function Router() {
     return(
@@ -16,6 +17,7 @@ function Router() {
                 <Route path='/registro' element={<Register/>}/>
                 <Route path="/contraseña_olvidada" element={<RecuperarContra/>} />
                 <Route path="/crearpost" element={<CrearPost/>} /> 
+                <Route path="/Perfil" element={<PerfilPersonal/>} /> 
             </Routes>
         </BrowserRouter>
     );

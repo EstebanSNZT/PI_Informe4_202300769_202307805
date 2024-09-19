@@ -1,0 +1,94 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+  
+h2, h3 {
+    color: #343a40;
+}
+  
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    position: relative; /* Necesario para el posicionamiento del ícono de eliminación */
+}
+  
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+  
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+button:hover {
+    background-color: #0b5ed7;
+}
+  
+.profile-info {
+    display: flex;
+    gap: 20px;
+}
+  
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+  
+.profile-details {
+    flex-grow: 1;
+}
+  
+.updated-courses {
+    margin-top: 30px;
+}
+
+/* Estilos para el ícono de eliminación */
+.course-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course-item {
+    position: relative; /* Necesario para el posicionamiento del ícono de eliminación */
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: red;
+    display: none; /* Ocultar por defecto */
+}
+
+.course-item:hover .delete-icon {
+    display: inline; /* Mostrar al pasar el ratón sobre el curso */
+}
