@@ -1,53 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 import './Styles/perfil.css';
 
 const Profile = () => {
-  const [currentCourses, setCurrentCourses] = useState([
-    { name: "Matemáticas", grade: 98 },
-    { name: "Física", grade: 85 },
-    { name: "Química", grade: 92 }
-  ]);
+  const [courses, setCourses] = useState([]);
+  const [winnedCourses, setWinnedCourses] = useState([]);
   const [newCourse, setNewCourse] = useState("");
   const [newGrade, setNewGrade] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const navigate = useNavigate();
 
-  // Cargar cursos desde localStorage cuando el componente se monta
   useEffect(() => {
-    const savedCourses = JSON.parse(localStorage.getItem('courses')) || [];
-    setCurrentCourses(savedCourses);
+    fetch(`http://localhost:5000/getCourses`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        setCourses(res);
+        console.log(res);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
-  // Guardar cursos en localStorage cada vez que currentCourses cambie
-  useEffect(() => {
-    localStorage.setItem('courses', JSON.stringify(currentCourses));
-  }, [currentCourses]);
-
   const handleCourseAddition = () => {
+    if (Number(newGrade) < 61) {
+      alert("La calificación debe ser mayor o igual a 61.");
+      return;
+    };
+
     if (newCourse.trim() && newGrade.trim()) {
       const newCourseObject = { name: newCourse.trim(), grade: Number(newGrade.trim()) };
-      // Añadir curso solo si no está ya en la lista
-      if (!currentCourses.some(course => course.name === newCourseObject.name)) {
-        setCurrentCourses([...currentCourses, newCourseObject]);
+      if (!winnedCourses.some(winnedCourse => winnedCourse.name === newCourseObject.name)) {
+        setWinnedCourses([...winnedCourses, newCourseObject]);
       }
       setNewCourse("");
       setNewGrade("");
-    }
+    };
   };
 
   const handleCourseDeletion = (courseName) => {
-    setCurrentCourses(currentCourses.filter(course => course.name !== courseName));
+    setWinnedCourses(winnedCourses.filter(winnedCourse => winnedCourse.name !== courseName));
   };
 
   const handleLogout = () => {
     removeCookie('user');
-    window.location.href = '/login'; // Redirige a la página de inicio de sesión
+    navigate('/login')
   };
 
   return (
-    <div className="container">
-      {/* Encabezado */}
+    <Fragment>
       <div className="row align-items-center justify-content-between mt-3 mb-5 mx-4">
         <div className="col d-flex align-items-center">
           <Link className="text-decoration-none" style={{ color: "#0d6efd", fontSize: "30px" }} >
@@ -66,31 +69,38 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="row">
-        {/* Sección izquierda - Lista de cursos ganados y agregar cursos */}
+      <div className="row mx-5">
         <div className="col-md-3">
           <h3>Cursos Ganados:</h3>
           <ul className="course-list">
-            {currentCourses.map((course, index) => (
-              <li key={index} className="course-item">
-                {course.name} - {course.grade}
-                <span 
-                  className="delete-icon" 
-                  onClick={() => handleCourseDeletion(course.name)}
-                >
-                  <i className="bi bi-trash"></i>
-                </span>
-              </li>
-            ))}
+            {
+              winnedCourses.map((winnedCourse, index) => (
+                <li key={index} className="course-item">
+                  {winnedCourse.name} - Nota: {winnedCourse.grade}
+                  <span
+                    className="delete-icon"
+                    onClick={() => handleCourseDeletion(winnedCourse.name)}
+                  >
+                    <i className="bi bi-trash"></i>
+                  </span>
+                </li>
+              ))
+            }
           </ul>
 
           <h3>Agregar Curso Ganado:</h3>
-          <input
-            type="text"
-            value={newCourse}
+          <select
+            className="form-select"
+            id="coursesFormSelect"
             onChange={(e) => setNewCourse(e.target.value)}
-            placeholder="Curso"
-          />
+          >
+            <option value=""></option>
+            {
+              courses.map((course) => (
+                <option key={`course-${course.id_curso}`} value={`${course.id_curso} ${course.nombre_curso}`}>{course.id_curso} {course.nombre_curso}</option>
+              ))
+            }
+          </select>
           <input
             type="number"
             value={newGrade}
@@ -100,7 +110,6 @@ const Profile = () => {
           <button onClick={handleCourseAddition}>Agregar Curso</button>
         </div>
 
-        {/* Sección derecha - Datos personales */}
         <div className="col-md-9">
           <h2>Datos Personales</h2>
           <div className="profile-info">
@@ -113,23 +122,26 @@ const Profile = () => {
               <p><strong>Nombre: </strong>{cookies.user.nombre_completo}</p>
               <p><strong>Carnet: </strong> {cookies.user.carnet}</p>
               <p><strong>Correo electrónico: </strong> {cookies.user.correo}</p>
+              <p><strong>Facultad: </strong> {cookies.user.facultad}</p>
+              <p><strong>Carrera: </strong> {cookies.user.carrera}</p>
             </div>
           </div>
 
-          {/* Cursos ganados actualizados */}
           <div className="updated-courses">
             <h3 style={{ color: 'orange' }}>Nuevos cursos ganados:</h3>
             <ul>
-              {currentCourses.map((course, index) => (
-                <li key={index}>
-                  {course.name} - {course.grade}
-                </li>
-              ))}
+              {
+                winnedCourses.map((winnedCourse, index) => (
+                  <li key={index}>
+                    {winnedCourse.name} - Nota: {winnedCourse.grade}
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

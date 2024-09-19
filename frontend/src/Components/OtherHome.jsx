@@ -59,15 +59,15 @@ function OtherHome() {
 
                 if (filter !== "") {
                     const filteredPosts = updatedPosts.filter(post => post.tipo_publicacion === filter);
-                    setPosts(filteredPosts.reverse());
+                    setPosts(filteredPosts);
                     console.log(filteredPosts);
                 } else if (search !== "") {
                     const searchedPosts = updatedPosts.filter(post => 
                         post.nombre_catedratico === search || post.nombre_curso === search);
-                    setPosts(searchedPosts.reverse());
+                    setPosts(searchedPosts);
                     console.log(searchedPosts);
                 } else {
-                    setPosts(updatedPosts.reverse());
+                    setPosts(updatedPosts);
                     console.log(updatedPosts);
                 }
             } catch (error) {
@@ -392,7 +392,7 @@ function OtherHome() {
                                                 <option key={`professor-${professor.id_catedratico}`} value={professor.id_catedratico}>{professor.nombre_catedratico}</option>
                                             ))
                                                 : courses.map((course) => (
-                                                    <option key={`course-${course.id_curso}`} value={course.id_curso}>{course.nombre_curso}</option>
+                                                    <option key={`course-${course.id_curso}`} value={course.id_curso}>{course.id_curso} - {course.nombre_curso}</option>
                                                 ))
                                         }
                                     </select>
