@@ -1,84 +1,123 @@
+/* Estilo para el encabezado */
+body {
+    background-color: #e0facdae !important; /* Color de fondo para el área completa */
+    margin: 0; /* Elimina el margen por defecto del body */
+    padding: 0; /* Elimina el padding por defecto del body */
+}
+
+/* Estilo para los botones en el encabezado */
+.header button {
+    font-size: 18px;
+    width: 180px;
+    border-radius: 10px; /* Bordes redondeados para los botones */
+    border: 1px solid #639ef6; /* Borde del botón */
+    background-color: rgb(250, 174, 174); /* Fondo blanco para el botón */
+    color: #000000; /* Color del texto del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Estilo para los botones en el encabezado al pasar el ratón */
+.header button:hover {
+    background-color: #0d6efd; /* Fondo del botón al pasar el ratón */
+    color: white; /* Color del texto del botón al pasar el ratón */
+}
+
+/* Estilo para el contenedor principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f7f5d7; /* Color de fondo para el contenedor principal */
+    border-radius: 10px; /* Bordes redondeados para el contenedor principal */
 }
-  
+
+/* Estilo para los títulos */
 h2, h3 {
     color: #343a40;
 }
-  
+
+/* Estilo para las listas */
 ul {
     list-style-type: none;
     padding: 0;
 }
-  
+
+/* Estilo para los elementos de lista */
 li {
     padding: 10px;
     margin-bottom: 5px;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
+    background-color: #f4d5aaac;
+    border: 1px solid #d1dde2;
+    border-radius: 10px;
     position: relative; /* Necesario para el posicionamiento del ícono de eliminación */
 }
-  
-input[type="text"] {
+
+/* Estilo para los campos de entrada de texto */
+input[type="text"], input[type="number"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ced4da;
-    border-radius: 5px;
+    border-radius: 10px; /* Bordes redondeados para los campos de entrada */
 }
-  
+
+/* Estilo para los botones en general */
 button {
     padding: 10px 20px;
     margin-top: 10px;
     background-color: #0d6efd;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px; /* Bordes redondeados para los botones */
     cursor: pointer;
 }
-  
+
+/* Estilo para los botones al pasar el ratón */
 button:hover {
     background-color: #0b5ed7;
 }
-  
+
+/* Estilo para la información del perfil */
 .profile-info {
     display: flex;
     gap: 20px;
 }
-  
+
+/* Estilo para la imagen de perfil */
 .profile-pic {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 10px; /* Bordes redondeados para la imagen de perfil */
 }
-  
+
+/* Estilo para los detalles del perfil */
 .profile-details {
     flex-grow: 1;
 }
-  
+
+/* Estilo para los cursos actualizados */
 .updated-courses {
     margin-top: 30px;
 }
 
-/* Estilos para el ícono de eliminación */
+/* Estilo para la lista de cursos */
 .course-list {
     list-style-type: none;
     padding: 0;
 }
 
+/* Estilo para los elementos de la lista de cursos */
 .course-item {
     position: relative; /* Necesario para el posicionamiento del ícono de eliminación */
     padding: 10px;
     margin-bottom: 5px;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
+/* Estilo para el ícono de eliminación en la lista de cursos */
 .delete-icon {
     position: absolute;
     right: 10px;
@@ -89,6 +128,7 @@ button:hover {
     display: none; /* Ocultar por defecto */
 }
 
+/* Mostrar el ícono de eliminación al pasar el ratón sobre el curso */
 .course-item:hover .delete-icon {
     display: inline; /* Mostrar al pasar el ratón sobre el curso */
 }
