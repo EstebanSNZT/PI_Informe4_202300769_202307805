@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import './Styles/perfil.css';
 
 const Profile = () => {
@@ -10,6 +11,7 @@ const Profile = () => {
   ]);
   const [newCourse, setNewCourse] = useState("");
   const [newGrade, setNewGrade] = useState("");
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
   // Cargar cursos desde localStorage cuando el componente se monta
   useEffect(() => {
@@ -38,6 +40,11 @@ const Profile = () => {
     setCurrentCourses(currentCourses.filter(course => course.name !== courseName));
   };
 
+  const handleLogout = () => {
+    removeCookie('user');
+    window.location.href = '/login'; // Redirige a la página de inicio de sesión
+  };
+
   return (
     <div className="container">
       {/* Encabezado */}
@@ -51,6 +58,11 @@ const Profile = () => {
           <Link className="text-decoration-none" style={{ color: "#0d6efd", fontSize: "30px" }} to="/inicio">
             <i className="bi bi-house"></i> Inicio
           </Link>
+        </div>
+        <div className="col d-flex justify-content-end pr-3">
+          <button className="btn btn-outline-primary" onClick={handleLogout} style={{ fontSize: "18px", width: "180px" }}>
+            <i className="bi bi-box-arrow-left"></i> Cerrar Sesión
+          </button>
         </div>
       </div>
 
@@ -98,9 +110,9 @@ const Profile = () => {
               className="profile-pic"
             />
             <div className="profile-details">
-              <p><strong>Nombre:</strong> Juan Pérez</p>
-              <p><strong>Carnet:</strong> 123456789</p>
-              <p><strong>Correo electrónico:</strong> juan.perez@example.com</p>
+              <p><strong>Nombre: </strong>{cookies.user.nombre_completo}</p>
+              <p><strong>Carnet: </strong> {cookies.user.carnet}</p>
+              <p><strong>Correo electrónico: </strong> {cookies.user.correo}</p>
             </div>
           </div>
 
